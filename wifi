@@ -2,6 +2,11 @@
 
 ulimit -c unlimited
 
+# set eth0 hwaddr
+#ifconfig eth0 down
+#ifconfig eth0 hw ether 68:c9:0b:c8:37:91
+#ifconfig eth0 up
+
 /usr/sbin/key_delete
 echo "start"
 #ifconfig eth0 up
