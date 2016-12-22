@@ -94,8 +94,7 @@ int main(void)
 						system("rm /home/forlinx/*");
 						system("reboot");
 					}
-					else {						
-						
+					else {												
 						if(access("/home/forlinx/delete", F_OK) == 0) {
 							printf("/home/forlinx/delete\n");
 							system("/home/forlinx/delete");

@@ -9,9 +9,8 @@ ulimit -c unlimited
 
 /usr/sbin/key_delete
 echo "start"
-#ifconfig eth0 up
 
-#CMD=`ifconfig eth0 | grep "RUNNING" | wc -l`
+#check weather eth0 is exit 
 /usr/sbin/check_connect
 CMD=$?
 if [ $CMD -gt 0 ]
