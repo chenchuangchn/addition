@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ulimit -c unlimited
+ulimit -c 1024
 
 # set eth0 hwaddr
 #ifconfig eth0 down
@@ -8,7 +8,7 @@ ulimit -c unlimited
 #ifconfig eth0 up
 
 /usr/sbin/key_delete
-echo "start"
+echo "new wifi start"
 
 #check weather eth0 is exit 
 /usr/sbin/check_connect
@@ -16,14 +16,15 @@ CMD=$?
 if [ $CMD -gt 0 ]
 then
 	echo "eth up"
+	ITF_NAME="eth0"
 	udhcpc
 	/usr/sbin/upgrade.bin
 		
 	if [ -f /home/forlinx/broadcast.bin ]
 	then
-		/home/forlinx/broadcast.bin
+		/home/forlinx/broadcast.bin $ITF_NAME
 	else
-		/usr/sbin/broadcast.bin
+		/usr/sbin/broadcast.bin $ITF_NAME
 	fi
 	
 	if [ -f /home/forlinx/gateway.bin ]
@@ -42,6 +43,7 @@ else
 			  # ifconfig wlan0 $IP
 			   #route add default gw 192.168.0.1
 			  # route
+			  ITF_NAME="wlan0"
 			   iwlist wlan0 scan
 			   read name</usr/sbin/name.txt
 			   read password</usr/sbin/password.txt
@@ -61,9 +63,9 @@ else
 		
 		if [ -f /home/forlinx/broadcast.bin ]
 		then
-			/home/forlinx/broadcast.bin
+			/home/forlinx/broadcast.bin $ITF_NAME
 		else
-			/usr/sbin/broadcast.bin
+			/usr/sbin/broadcast.bin $ITF_NAME
 		fi
 		
 		if [ -f /home/forlinx/gateway.bin ]
