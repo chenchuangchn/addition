@@ -92,17 +92,21 @@ int main(void)
 						system("cp /usr/sbin/upgrade.json /home/root/");
 						printf("rm /home/forlinx/*\n");
 						system("rm /home/forlinx/*");
+						printf("sync\n");
+						system("sync");
 						system("reboot");
+						break;
 					}
-					else {						
-						
+					else {												
 						if(access("/home/forlinx/delete", F_OK) == 0) {
 							printf("/home/forlinx/delete\n");
 							system("/home/forlinx/delete");
+							break;
 						}
 						else {
 							printf("impletment /usr/sbin/delete\n");
 							system("/usr/sbin/delete");
+							break;
 						}
 					}
 				}

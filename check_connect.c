@@ -53,9 +53,9 @@ int get_netlink_status(const char *if_name)
         return -1;  
 	
 	/*try 3 times*/
-	for(i = 0; i < 3; i++) {
+	for(i = 0; i < 2; i++) {
 		printf("try...\n");
-		sleep(3);
+		sleep(2);
 		ret = ioctl( skfd, SIOCETHTOOL,&ifr );
 		if(ret == -1)  
 		{  
